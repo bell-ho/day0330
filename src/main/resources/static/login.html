@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#btn").click(function(){
+			var thisemail ={email:$("#email").val()}
+// 			alert(thisemail)
+			$.ajax("/login.do",{data:thisemail , success:function(data){
+				alert("인증번호가 발송되었습니다")
+				$("body").empty()
+				var inp = $("<input\>").attr("type","text")
+// 				다른방법  $("<input/>",{type:"text"})
+				$(inp).attr("id","cecinp")
+				$("body").append(inp)
+				
+				var cecbtn = $("<button>확인</button>").attr("id","cecbtn")
+				$("body").append(cecbtn)
+				
+				
+				$("#cecbtn").click(function(){
+// 					alert("D")
+					if(data == inp.val()){
+						alert("가입되었습니다")
+					}else{
+						alert("인증번호가 틀렸습니다")
+					}
+				})
+			}})
+		})
+	})
+</script>
+</head>
+<body>
+	<input type="text"  id="email">
+	<button id="btn">등록</button>
+</body>
+</html>

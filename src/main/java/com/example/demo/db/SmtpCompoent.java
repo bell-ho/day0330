@@ -10,12 +10,11 @@ import org.springframework.stereotype.Component;
 public class SmtpCompoent {
 	
 	@Bean
-	public JavaMailSenderImpl javaMailSender()
-	{
+	public JavaMailSenderImpl javaMailSender(){
 		JavaMailSenderImpl r = new JavaMailSenderImpl();
-		r.setHost("smtp.naver.com");
+		r.setHost("smtp.gmail.com");
 		r.setPort(587);
-		r.setUsername("tisso010");
+		r.setUsername("jj0101065");
 		r.setPassword("");
 		r.setDefaultEncoding("UTF-8");
 		
