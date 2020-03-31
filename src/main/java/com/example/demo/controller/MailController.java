@@ -60,11 +60,18 @@ public class MailController {
 
 	@RequestMapping("/login.do")
 	public String login(String email) {
-		int ran = (int) Math.ceil(Math.random() * 10000);
+//		int ran = (int) Math.ceil(Math.random() * 10000)+1000; //+1000이 최소값을 정해줌
+		int ran = (int) Math.ceil(Math.random() * 10000); //+1000이 최소값을 정해줌
+		
+		int realran =0;
+		
+		if(ran>=1000) {
+			realran = ran;
+		}
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 		mailMessage.setSubject("인증절차입니다");
 		mailMessage.setFrom("보내는사람 id");
-		mailMessage.setText("" + ran); // 인트를 문자열로 바꾸는 방법
+		mailMessage.setText("" + realran); // 인트를 문자열로 바꾸는 방법
 		mailMessage.setTo(email);
 		try {
 			javaMailSender.send(mailMessage);
