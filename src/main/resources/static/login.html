@@ -20,11 +20,12 @@
 				var cecbtn = $("<button>확인</button>").attr("id","cecbtn")
 				$("body").append(cecbtn)
 				
-				
 				$("#cecbtn").click(function(){
 // 					alert("D")
 					if(data == inp.val()){
 						alert("가입되었습니다")
+						$("body").append(inp)
+						
 					}else{
 						alert("인증번호가 틀렸습니다")
 					}
@@ -37,5 +38,6 @@
 <body>
 	<input type="text"  id="email">
 	<button id="btn">등록</button>
+	
 </body>
 </html>

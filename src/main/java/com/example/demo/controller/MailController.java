@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dao.MailDao;
 import com.example.demo.vo.EmpVo;
+import com.google.gson.Gson;
 
 @RestController
 public class MailController {
@@ -59,24 +60,32 @@ public class MailController {
 
 	@RequestMapping("/login.do")
 	public String login(String email) {
-		int ran = (int) Math.ceil(Math.random () * 10000);
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-			mailMessage.setSubject("인증절차입니다");
-			mailMessage.setFrom("jj0101065@gmail.com");
-			mailMessage.setText(""+ran); //인트를 문자열로 바꾸는 방법
-			mailMessage.setTo(email);
-			try {
-				javaMailSender.send(mailMessage);
-			} catch (Exception e) {
-				// TODO: handle exception'
-				System.out.println(e.getMessage());
-			}
-		
-		return ""+ran;
+		int ran = (int) Math.ceil(Math.random() * 10000);
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
+		mailMessage.setSubject("인증절차입니다");
+		mailMessage.setFrom("보내는사람 id");
+		mailMessage.setText("" + ran); // 인트를 문자열로 바꾸는 방법
+		mailMessage.setTo(email);
+		try {
+			javaMailSender.send(mailMessage);
+		} catch (Exception e) {
+			// TODO: handle exception'
+			System.out.println(e.getMessage());
+		}
+
+		return "" + ran;
 	}
-	
-	
-	
+
+	@RequestMapping("/insert.do")
+	public String insert(EmpVo e) {
+		int re= -1;
+		Gson gson = new Gson();
+		re = dao.insert(e);
+		String str = gson.toJson(re);
+		return str;
+
+	}
+
 //	@RequestMapping("/ddd.do")
 //	public void list() {
 //		List<EmpVo> list = dao.listAll();

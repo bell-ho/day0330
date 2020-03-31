@@ -28,4 +28,11 @@ public class MailManager {
 		session.close();
 		return list;
 	}
+	public static int insert(EmpVo e) {
+		int re = -1;
+		SqlSession session = factory.openSession(true);
+		re = session.insert("emp,insert",e);
+		session.close();
+		return re;
+	}
 }

@@ -12,4 +12,7 @@ public class MailDao {
 	public List<EmpVo>listAll(){
 		return MailManager.listAll();
 	}
+	public int insert(EmpVo e) {
+		return MailManager.insert(e);
+	}
 }

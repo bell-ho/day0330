@@ -14,8 +14,8 @@ public class SmtpCompoent {
 		JavaMailSenderImpl r = new JavaMailSenderImpl();
 		r.setHost("smtp.gmail.com");
 		r.setPort(587);
-		r.setUsername("jj0101065");
-		r.setPassword("");
+		r.setUsername("보내는사람 id @뒤에는 빼고 입력");
+		r.setPassword("비밀번호");
 		r.setDefaultEncoding("UTF-8");
 		
 		Properties prop = new Properties();
